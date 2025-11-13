@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Інформація про лабораторну";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+        <th>Пункт</th>
+        <th>Значення</th>
+    </tr>
+    <tr>
+        <td>Номер лабораторної роботи</td>
+        <td>@ViewData["LabNumber"]</td>
+    </tr>
+    <tr>
+        <td>Тема</td>
+        <td>@ViewData["Topic"]</td>
+    </tr>
+    <tr>
+        <td>Мета</td>
+        <td>@ViewData["Goal"]</td>
+    </tr>
+    <tr>
+        <td>Виконавець</td>
+        <td>@ViewData["Author"]</td>
+    </tr>
+</table>
+
