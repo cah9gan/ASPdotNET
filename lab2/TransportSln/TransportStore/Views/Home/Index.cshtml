@@ -1,0 +1,25 @@
+@model TransportListViewModel
+
+
+@foreach (var t in Model.Transports ?? Enumerable.Empty<Transport>())
+{
+    
+    <div class="border rounded p-3 mb-3 shadow-sm">
+        <div class="d-flex justify-content-between">
+            <h3 class="mb-1">@t.Type</h3>
+            <h4 class="text-success">@t.PricePerHour.ToString("c") / год.</h4>
+        </div>
+        <small class="text-muted">Модель: @t.Model</small>
+    </div>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center mt-4">
+        @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PagingInfo.CurrentPage ? "active" : "")">
+                <a class="page-link" href="/?page=@i">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
