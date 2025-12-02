@@ -5,13 +5,14 @@
         <h3 class="mb-1">@Model.Model</h3>
         <h4 class="text-success">@Model.PricePerHour.ToString("c") / год.</h4>
     </div>
-    
     <small class="text-muted">Категорія: @Model.Type</small>
     
+    <div class="mt-2 d-flex justify-content-between align-items-center">
+        <a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-info">
+            Детальніше / Відгуки
+        </a>
 
-    <div class="mt-2 text-end">
         <form asp-action="AddToCart" asp-controller="Cart" method="post">
-            
             <input type="hidden" name="transportId" value="@Model.Id" />
             
             <input type="hidden" name="returnUrl" value="@(ViewContext.HttpContext.Request.Path + ViewContext.HttpContext.Request.QueryString)" />

@@ -1,0 +1,61 @@
+@model Transport
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h2>@Model.Model <small class="text-muted">(@Model.Type)</small></h2>
+    </div>
+    <div class="card-body">
+        <p><strong>ID:</strong> @Model.Id</p>
+        <p><strong>Ціна:</strong> @Model.PricePerHour.ToString("c") / год.</p>
+        <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>
+    </div>
+</div>
+
+<h3>Відгуки (@Model.Reviews?.Count())</h3>
+
+@if (Model.Reviews != null && Model.Reviews.Any())
+{
+    <ul class="list-group mb-4">
+        @foreach (var r in Model.Reviews)
+        {
+            <li class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <strong>@r.User</strong> <span class="badge bg-primary">@r.Rating/5</span>
+                        <p class="mb-0">@r.Comment</p>
+                        <small class="text-muted">@r.Date.ToShortDateString()</small>
+                    </div>
+                    
+                    <form asp-action="DeleteReview" method="post">
+                        <input type="hidden" name="reviewId" value="@r.Id" />
+                        <input type="hidden" name="transportId" value="@Model.Id" />
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Видалити відгук</button>
+                    </form>
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p class="text-muted">Відгуків поки немає.</p>
+}
+
+<div class="card p-3 bg-light">
+    <h4>Додати відгук</h4>
+    <form asp-action="AddReview" method="post">
+        <input type="hidden" name="TransportId" value="@Model.Id" />
+        
+        <div class="mb-2">
+            <input name="User" class="form-control" placeholder="Ваше ім'я" required />
+        </div>
+        <div class="mb-2">
+            <input name="Rating" type="number" min="1" max="5" class="form-control" placeholder="Оцінка (1-5)" required />
+        </div>
+        <div class="mb-2">
+            <textarea name="Comment" class="form-control" placeholder="Коментар" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Надіслати відгук</button>
+    </form>
+</div>

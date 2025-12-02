@@ -1,0 +1,15 @@
+@model Transport
+
+<div class="alert alert-danger">
+    <h3>Ви впевнені, що хочете видалити цей транспорт?</h3>
+    <p>
+        <strong>@Model.Type @Model.Model</strong><br/>
+        Цю дію неможливо скасувати.
+    </p>
+    
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Так, видалити</button>
+        <a asp-action="Index" class="btn btn-secondary">Скасувати</a>
+    </form>
+</div>

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TransportStore.Models; 
 using TransportStore.Models.ViewModels; 
 
@@ -21,12 +22,10 @@ namespace TransportStore.Controllers
 
             var totalItems = filteredData.Count();
 
-
             return View(new TransportListViewModel
             {
-
                 Transports = filteredData
-                    .OrderBy(t => t.Id) 
+                    .OrderBy(t => t.Id)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize),             
 
@@ -36,9 +35,33 @@ namespace TransportStore.Controllers
                     ItemsPerPage = PageSize,
                     TotalItems = totalItems
                 },
-                
                 CurrentCategory = category
             });
+        }
+
+        public IActionResult Details(long id)
+        {
+            var transport = repository.Transports
+                .Include(t => t.Reviews) 
+                .FirstOrDefault(t => t.Id == id);
+
+            if (transport == null) return NotFound();
+
+            return View(transport);
+        }
+
+        [HttpPost]
+        public IActionResult AddReview(Review review)
+        {
+            review.Date = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                repository.CreateReview(review);
+                return RedirectToAction("Details", new { id = review.TransportId });
+            }
+
+            return RedirectToAction("Details", new { id = review.TransportId });
         }
     }
 }
