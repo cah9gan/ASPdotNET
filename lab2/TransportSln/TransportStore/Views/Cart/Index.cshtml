@@ -1,0 +1,51 @@
+@model TransportStore.Models.ViewModels.CartViewModel
+
+<h2>Ваш кошик</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Транспорт</th>
+            <th>Кількість (год)</th>
+            <th>Ціна</th>
+            <th>Разом</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-start">@line.Transport.Model</td>
+                
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-end">@line.Transport.PricePerHour.ToString("c")</td>
+                <td class="text-end">
+                    @((line.Quantity * line.Transport.PricePerHour).ToString("c"))
+                </td>
+                <td class="text-center">
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="transportId"
+                               value="@line.Transport.Id" />
+                        <input type="hidden" name="returnUrl"
+                               value="@Model.ReturnUrl" />
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Видалити
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-end">Разом:</td>
+            <td class="text-end">
+                @Model.Cart.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Продовжити вибір</a>
+</div>

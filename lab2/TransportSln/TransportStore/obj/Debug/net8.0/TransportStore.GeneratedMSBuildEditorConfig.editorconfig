@@ -18,8 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\labs\lab2\TransportSln\TransportStore
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/labs/lab2/TransportSln/TransportStore/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FydFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/labs/lab2/TransportSln/TransportStore/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/labs/lab2/TransportSln/TransportStore/Views/Shared/Components/NavigationMenu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTmF2aWdhdGlvbk1lbnVcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/labs/lab2/TransportSln/TransportStore/Views/Shared/TransportSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFRyYW5zcG9ydFN1bW1hcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/labs/lab2/TransportSln/TransportStore/Views/Shared/_Layout.cshtml]
