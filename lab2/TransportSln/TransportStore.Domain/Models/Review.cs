@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TransportStore.Models
+namespace TransportStore.Domain.Models
 {
     public class Review
     {

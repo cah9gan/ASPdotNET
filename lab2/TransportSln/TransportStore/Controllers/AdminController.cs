@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization; 
 using Microsoft.AspNetCore.Mvc;
-using TransportStore.Models;
+using TransportStore.Domain.Models; // Updated namespace
 
 namespace TransportStore.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private IStoreRepository repository;
@@ -24,11 +26,11 @@ namespace TransportStore.Controllers
             return View(transport);
         }
 
-        public IActionResult Edit(long id)
+        public IActionResult Edit(long id) 
         {
             if (id == 0)
             {
-                return View(new Transport());
+                return View(new Transport()); 
             }
             else
             {
@@ -64,6 +66,7 @@ namespace TransportStore.Controllers
             }
             return RedirectToAction("Index");
         }
+
         
         [HttpPost]
         public IActionResult AddReview(Review review)

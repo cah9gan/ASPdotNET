@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportStore", "TransportStore\TransportStore.csproj", "{10BF82E0-476C-44FD-9A36-725F7FF715C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportStore.Domain", "TransportStore.Domain\TransportStore.Domain.csproj", "{6A49D129-CB4D-4990-9175-984CA28C1DC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportStore.WebApi", "TransportStore.WebApi\TransportStore.WebApi.csproj", "{8C42B32A-9D2A-471F-9A53-32F5DF5B4EB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{10BF82E0-476C-44FD-9A36-725F7FF715C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10BF82E0-476C-44FD-9A36-725F7FF715C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10BF82E0-476C-44FD-9A36-725F7FF715C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A49D129-CB4D-4990-9175-984CA28C1DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A49D129-CB4D-4990-9175-984CA28C1DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A49D129-CB4D-4990-9175-984CA28C1DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A49D129-CB4D-4990-9175-984CA28C1DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C42B32A-9D2A-471F-9A53-32F5DF5B4EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C42B32A-9D2A-471F-9A53-32F5DF5B4EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C42B32A-9D2A-471F-9A53-32F5DF5B4EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C42B32A-9D2A-471F-9A53-32F5DF5B4EB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

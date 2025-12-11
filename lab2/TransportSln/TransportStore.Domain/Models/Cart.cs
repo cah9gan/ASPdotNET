@@ -1,4 +1,4 @@
-namespace TransportStore.Models
+namespace TransportStore.Domain.Models
 {
     public class Cart
     {

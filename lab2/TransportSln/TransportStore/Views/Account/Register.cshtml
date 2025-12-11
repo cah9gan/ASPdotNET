@@ -1,0 +1,34 @@
+@model TransportStore.Models.ViewModels.RegisterModel
+
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="text-center">Реєстрація</h2>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <form asp-action="Register" method="post">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Логін</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Пароль (мін. 8 симв, A-Z, 0-9)</label>
+            <input asp-for="Password" type="password" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ConfirmPassword" class="form-label">Підтвердження паролю</label>
+            <input asp-for="ConfirmPassword" type="password" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Зареєструватися</button>
+    </form>
+    
+    <div class="mt-3 text-center">
+        <span class="text-muted">Вже є акаунт?</span> <a asp-action="Login">Увійти</a>
+    </div>
+</div>

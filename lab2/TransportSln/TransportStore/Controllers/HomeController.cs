@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TransportStore.Models; 
+using TransportStore.Domain.Models; // Updated namespace for Domain models
 using TransportStore.Models.ViewModels; 
 
 namespace TransportStore.Controllers
@@ -27,7 +27,7 @@ namespace TransportStore.Controllers
                 Transports = filteredData
                     .OrderBy(t => t.Id)
                     .Skip((page - 1) * PageSize)
-                    .Take(PageSize),             
+                    .Take(PageSize),            
 
                 PagingInfo = new PagingInfo
                 {

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace TransportStore.Models
+namespace TransportStore.Domain.Models
 {
     public class StoreDbContext : DbContext
     {

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TransportStore.Models
+namespace TransportStore.Domain.Models
 {
     public class Transport
     {

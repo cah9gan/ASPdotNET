@@ -12,8 +12,8 @@ using TransportStore.Models;
 namespace TransportStore.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20251202162002_AddDescriptionColumn")]
-    partial class AddDescriptionColumn
+    [Migration("20251204154710_InitialStore")]
+    partial class InitialStore
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

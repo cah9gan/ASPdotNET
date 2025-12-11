@@ -135,3 +135,4 @@ D:\labs\lab2\TransportSln\TransportStore\bin\Debug\net8.0\runtimes\win\lib\net6.
 D:\labs\lab2\TransportSln\TransportStore\obj\Debug\net8.0\Transpor.C464C3A8.Up2Date
 D:\labs\lab2\TransportSln\TransportStore\bin\Debug\net8.0\libman.json
 D:\labs\lab2\TransportSln\TransportStore\bin\Debug\net8.0\TransportStore.staticwebassets.runtime.json
+D:\labs\lab2\TransportSln\TransportStore\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
