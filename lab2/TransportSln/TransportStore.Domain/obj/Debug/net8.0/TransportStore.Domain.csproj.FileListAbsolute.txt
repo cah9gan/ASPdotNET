@@ -1,0 +1,13 @@
+D:\labs\lab2\TransportSln\TransportStore.Domain\bin\Debug\net8.0\TransportStore.Domain.deps.json
+D:\labs\lab2\TransportSln\TransportStore.Domain\bin\Debug\net8.0\TransportStore.Domain.dll
+D:\labs\lab2\TransportSln\TransportStore.Domain\bin\Debug\net8.0\TransportStore.Domain.pdb
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.csproj.AssemblyReference.cache
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.AssemblyInfoInputs.cache
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.AssemblyInfo.cs
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.csproj.CoreCompileInputs.cache
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.sourcelink.json
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.dll
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\refint\TransportStore.Domain.dll
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\TransportStore.Domain.pdb
+D:\labs\lab2\TransportSln\TransportStore.Domain\obj\Debug\net8.0\ref\TransportStore.Domain.dll

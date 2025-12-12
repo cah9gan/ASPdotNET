@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\obj\\Debug\\net8.0\\compressed\\loi7jdfvga.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\obj\\Debug\\net8.0\\scopedcss\\bundle\\TransportStore.BlazorClient.styles.css",
+      "PackagePath": "staticwebassets\\TransportStore.BlazorClient.styles.css"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\labs\\lab2\\TransportSln\\TransportStore.BlazorClient\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TransportStore.BlazorClient.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TransportStore.BlazorClient.props",
+      "PackagePath": "build\\TransportStore.BlazorClient.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TransportStore.BlazorClient.props",
+      "PackagePath": "buildMultiTargeting\\TransportStore.BlazorClient.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TransportStore.BlazorClient.props",
+      "PackagePath": "buildTransitive\\TransportStore.BlazorClient.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

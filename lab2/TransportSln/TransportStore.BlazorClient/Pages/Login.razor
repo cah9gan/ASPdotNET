@@ -1,0 +1,49 @@
+@page "/login"
+@inject TransportStore.BlazorClient.Services.IAuthService AuthService
+@inject NavigationManager Navigation
+
+<h3>Вхід</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="mb-3">
+                <label>Логін</label>
+                <InputText class="form-control" @bind-Value="loginModel.UserName" />
+            </div>
+            <div class="mb-3">
+                <label>Пароль</label>
+                <InputText type="password" class="form-control" @bind-Value="loginModel.Password" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Увійти</button>
+            <a href="register" class="btn btn-link">Зареєструватися</a>
+            
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger mt-2">@errorMessage</div>
+            }
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private LoginDto loginModel = new LoginDto();
+    private string errorMessage = string.Empty;
+
+    private async Task HandleLogin()
+    {
+        var result = await AuthService.Login(loginModel);
+        if (result != null)
+        {
+            Navigation.NavigateTo("/transports");
+        }
+        else
+        {
+            errorMessage = "Невірний логін або пароль";
+        }
+    }
+}

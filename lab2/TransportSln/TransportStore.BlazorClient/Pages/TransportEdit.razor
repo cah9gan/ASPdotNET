@@ -1,0 +1,99 @@
+@page "/transport/edit/{Id:long?}"
+@page "/transport/edit"
+@using TransportStore.BlazorClient.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>@(Id.HasValue ? "Редагування" : "Створення") транспорту</h3>
+
+<EditForm Model="@transport" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Тип (Категорія)</label>
+        <InputText class="form-control" @bind-Value="transport.Type" placeholder="Наприклад: Автомобіль" />
+        <ValidationMessage For="@(() => transport.Type)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Модель</label>
+        <InputText class="form-control" @bind-Value="transport.Model" placeholder="Наприклад: Toyota Camry" />
+        <ValidationMessage For="@(() => transport.Model)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Опис</label>
+        <InputTextArea class="form-control" @bind-Value="transport.Description" rows="3" />
+        <ValidationMessage For="@(() => transport.Description)" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ціна за годину</label>
+        <InputNumber class="form-control" @bind-Value="transport.PricePerHour" />
+        <ValidationMessage For="@(() => transport.PricePerHour)" />
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-success">Зберегти</button>
+        <button type="button" class="btn btn-secondary ms-2" @onclick="Cancel">Скасувати</button>
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public long? Id { get; set; }
+
+    private TransportDto transport = new TransportDto();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id.HasValue)
+        {
+            try 
+            {
+                // ВИПРАВЛЕННЯ: Додано "?? new TransportDto()", щоб гарантувати, що змінна не отримає null
+                transport = await Http.GetFromJsonAsync<TransportDto>($"api/products/{Id}") ?? new TransportDto();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Помилка завантаження: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        HttpResponseMessage response;
+
+        try
+        {
+            if (Id.HasValue)
+            {
+                response = await Http.PutAsJsonAsync($"api/products/{Id}", transport);
+            }
+            else
+            {
+                response = await Http.PostAsJsonAsync("api/products", transport);
+            }
+
+            if (response.IsSuccessStatusCode)
+            {
+                Navigation.NavigateTo("/transports");
+            }
+            else
+            {
+                Console.WriteLine($"Помилка збереження. Статус: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Помилка з'єднання: {ex.Message}");
+        }
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/transports");
+    }
+}

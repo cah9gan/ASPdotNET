@@ -1,0 +1,39 @@
+﻿@inherits LayoutComponentBase
+@using TransportStore.BlazorClient.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="page">
+    <div class="sidebar">
+        <!-- Теперь NavMenu ищется в той же папке (Layout), конфликта не будет -->
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <AuthorizeView>
+                <Authorized>
+                    <span class="me-3">Привіт, <b>@context.User.Identity?.Name</b>!</span>
+                    <button class="btn btn-link" @onclick="Logout">Вийти</button>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="login" class="me-3">Увійти</a>
+                    <a href="register">Реєстрація</a>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    private async Task Logout()
+    {
+        await AuthService.Logout();
+        Navigation.NavigateTo("/login");
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "gz52sdiaUYdoLtCC6C+BNqmQ2jy1Q+KpSlb1JyMJMHc=",
+  "Source": "TransportStore.WebApi",
+  "BasePath": "_content/TransportStore.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
