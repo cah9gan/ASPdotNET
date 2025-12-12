@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TransportStore.Models;
+using TransportStore.Domain.Models;
 
 #nullable disable
 
 namespace TransportStore.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20251204154756_InitialIdentity")]
+    [Migration("20251212164116_InitialIdentity")]
     partial class InitialIdentity
     {
         /// <inheritdoc />

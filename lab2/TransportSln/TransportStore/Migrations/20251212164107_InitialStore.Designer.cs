@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TransportStore.Models;
+using TransportStore.Domain.Models;
 
 #nullable disable
 
 namespace TransportStore.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20251204154710_InitialStore")]
+    [Migration("20251212164107_InitialStore")]
     partial class InitialStore
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace TransportStore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TransportStore.Models.Review", b =>
+            modelBuilder.Entity("TransportStore.Domain.Models.Review", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace TransportStore.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("TransportStore.Models.Transport", b =>
+            modelBuilder.Entity("TransportStore.Domain.Models.Transport", b =>
                 {
                     b.Property<long?>("Id")
                         .ValueGeneratedOnAdd()
@@ -86,9 +86,9 @@ namespace TransportStore.Migrations
                     b.ToTable("Transports");
                 });
 
-            modelBuilder.Entity("TransportStore.Models.Review", b =>
+            modelBuilder.Entity("TransportStore.Domain.Models.Review", b =>
                 {
-                    b.HasOne("TransportStore.Models.Transport", "Transport")
+                    b.HasOne("TransportStore.Domain.Models.Transport", "Transport")
                         .WithMany("Reviews")
                         .HasForeignKey("TransportId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -97,7 +97,7 @@ namespace TransportStore.Migrations
                     b.Navigation("Transport");
                 });
 
-            modelBuilder.Entity("TransportStore.Models.Transport", b =>
+            modelBuilder.Entity("TransportStore.Domain.Models.Transport", b =>
                 {
                     b.Navigation("Reviews");
                 });

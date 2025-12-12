@@ -13,7 +13,10 @@
             <div class="mt-3">
                 <form asp-action="AddToCart" asp-controller="Cart" method="post" class="d-inline">
                     <input type="hidden" name="transportId" value="@Model.Id" />
-                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                    
+                    <!-- ИСПРАВЛЕНИЕ: Используем Path + QueryString вместо PathAndQuery() -->
+                    <input type="hidden" name="returnUrl" value="@(ViewContext.HttpContext.Request.Path + ViewContext.HttpContext.Request.QueryString)" />
+                    
                     <button type="submit" class="btn btn-success">Орендувати</button>
                 </form>
                 <a asp-action="Index" class="btn btn-secondary">Назад до списку</a>

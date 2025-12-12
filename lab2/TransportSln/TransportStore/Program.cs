@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TransportStore.Domain.Models; // Added this namespace to find DbContexts and Repositories
+using TransportStore.Domain.Models;
 using TransportStore.Models;
+using TransportStore.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSignalR();
 
 builder.Services.AddControllersWithViews(options => 
 {
@@ -13,7 +16,10 @@ builder.Services.AddControllersWithViews(options =>
 builder.Services.AddDbContext<StoreDbContext>(opts => {
     opts.UseSqlServer(
         builder.Configuration["ConnectionStrings:TransportStoreConnection"],
-        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
+        sqlServerOptions => {
+            sqlServerOptions.EnableRetryOnFailure();
+            sqlServerOptions.MigrationsAssembly("TransportStore"); 
+        }
     );
 });
 
@@ -22,14 +28,14 @@ builder.Services.AddScoped<IStoreRepository, EFStoreRepository>();
 builder.Services.AddDbContext<AppIdentityDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:IdentityConnection"],
-        sqlServerOptions => sqlServerOptions.EnableRetryOnFailure()
+        sqlServerOptions => {
+            sqlServerOptions.EnableRetryOnFailure();
+            sqlServerOptions.MigrationsAssembly("TransportStore"); 
+        }
     ));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(opts => {
     opts.SignIn.RequireConfirmedAccount = false;
-    opts.SignIn.RequireConfirmedEmail = false;
-    opts.SignIn.RequireConfirmedPhoneNumber = false;
-
     opts.Password.RequiredLength = 6; 
     opts.Password.RequireNonAlphanumeric = false;
     opts.Password.RequireLowercase = true;
@@ -55,15 +61,15 @@ builder.Services.AddSession();
 var app = builder.Build();
 
 app.UseStaticFiles();
-
 app.UseSession(); 
 app.UseRouting(); 
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapDefaultControllerRoute();
+app.MapHub<TransportHub>("/transporthub");
 
+app.MapDefaultControllerRoute();
 
 using (var scope = app.Services.CreateScope())
 {

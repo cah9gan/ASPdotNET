@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using TransportStore.Models;
+using System.Linq;
+using TransportStore.Domain.Models; 
 
 namespace TransportStore.Components
 {
@@ -15,13 +16,10 @@ namespace TransportStore.Components
         public IViewComponentResult Invoke()
         {
             ViewBag.SelectedCategory = RouteData?.Values["category"];
-
-            var categories = repository.Transports
+            return View(repository.Transports
                 .Select(x => x.Type)
                 .Distinct()
-                .OrderBy(x => x);
-
-            return View(categories);
+                .OrderBy(x => x));
         }
     }
 }

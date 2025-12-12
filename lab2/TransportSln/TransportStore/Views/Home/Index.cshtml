@@ -1,23 +1,81 @@
+@using TransportStore.Domain.Models
+@using TransportStore.Models.ViewModels
 @model TransportListViewModel
 
-@foreach (var t in Model.Transports ?? Enumerable.Empty<Transport>())
-{
-    <partial name="TransportSummary" model="t" />
-}
+<h2>Каталог транспорту</h2>
+
+<div class="mb-3">
+    <a asp-action="Index" asp-route-category="" class="btn btn-outline-secondary @(Model.CurrentCategory == null ? "active" : "")">Всі</a>
+    @foreach (var cat in Model.Transports.Select(x => x.Type).Distinct())
+    {
+        <a asp-action="Index" asp-route-category="@cat" class="btn btn-outline-secondary @(Model.CurrentCategory == cat ? "active" : "")">@cat</a>
+    }
+</div>
+
+<div class="row">
+    @foreach (var t in Model.Transports)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@t.Model</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@t.Type</h6>
+                    <p class="card-text">@t.Description</p>
+                    <h4 class="text-success">@t.PricePerHour.ToString("c") / год</h4>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <a asp-action="Details" asp-route-id="@t.Id" class="btn btn-info w-100 mb-2">Деталі</a>
+                    
+                    <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                        <input type="hidden" name="transportId" value="@t.Id" />
+                        <input type="hidden" name="returnUrl" value="@(Context.Request.Path + Context.Request.QueryString)" />
+                        
+                        <button type="submit" id="rent-btn-@t.Id" class="btn btn-success w-100">
+                            Орендувати
+                        </button>
+                        
+
+                        <span id="status-msg-@t.Id" class="text-danger fw-bold" style="display:none;">
+                            Вже орендовано!
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
 
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center mt-4">
-        @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
-        {
-            <li class="page-item @(i == Model.PagingInfo.CurrentPage ? "active" : "")">
-                <a class="page-link" 
-                   asp-action="Index" 
-                   asp-route-page="@i" 
-                   asp-route-category="@Model.CurrentCategory">
-                   @i
-                </a>
-            </li>
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary" class="btn-group pull-right m-1">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/transporthub")
+        .build();
+
+    connection.on("ReceiveAvailabilityUpdate", (transportId, isAvailable) => {
+        console.log(`Оновлення для ID: ${transportId}, Доступний: ${isAvailable}`);
+
+        const btn = document.getElementById(`rent-btn-${transportId}`);
+        const msg = document.getElementById(`status-msg-${transportId}`);
+
+        if (isAvailable === false) {
+            if (btn) {
+                btn.disabled = true;       
+                btn.style.display = 'none'; 
+            }
+            if (msg) {
+                msg.style.display = 'block'; 
+            }
         }
-    </ul>
-</nav>
+    });
+
+    connection.start()
+        .then(() => console.log("SignalR Connected!"))
+        .catch(err => console.error("SignalR Error:", err.toString()));
+</script>

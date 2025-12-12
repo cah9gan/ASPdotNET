@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization; 
 using Microsoft.AspNetCore.Mvc;
-using TransportStore.Domain.Models; // Updated namespace
+using TransportStore.Domain.Models; 
 
 namespace TransportStore.Controllers
 {

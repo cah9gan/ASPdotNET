@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using TransportStore.Domain.Models;
+using TransportStore.Hubs;
 using TransportStore.Infrastructure;
 using TransportStore.Models;
 using TransportStore.Models.ViewModels;
@@ -8,10 +11,12 @@ namespace TransportStore.Controllers
     public class CartController : Controller
     {
         private IStoreRepository repository;
+        private readonly IHubContext<TransportHub> _hubContext;
 
-        public CartController(IStoreRepository repo)
+        public CartController(IStoreRepository repo, IHubContext<TransportHub> hubContext)
         {
             repository = repo;
+            _hubContext = hubContext;
         }
 
         public IActionResult Index(string returnUrl)
@@ -24,9 +29,8 @@ namespace TransportStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToCart(long transportId, string returnUrl)
+        public async Task<IActionResult> AddToCart(long transportId, string returnUrl)
         {
-
             Transport? transport = repository.Transports
                 .FirstOrDefault(p => p.Id == transportId);
 
@@ -35,6 +39,8 @@ namespace TransportStore.Controllers
                 Cart cart = GetCart();
                 cart.AddItem(transport, 1);
                 SaveCart(cart);
+
+                await _hubContext.Clients.All.SendAsync("ReceiveAvailabilityUpdate", transportId, false);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
