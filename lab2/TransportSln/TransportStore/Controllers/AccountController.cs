@@ -129,8 +129,9 @@ namespace TransportStore.Controllers
             var result = await userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                ViewBag.Message = "Профіль оновлено успішно!";
-                return View(model);
+                await userManager.AddToRoleAsync(user, "User");
+                await signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index", "Home");
             }
 
             foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
