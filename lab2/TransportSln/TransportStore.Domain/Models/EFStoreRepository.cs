@@ -4,6 +4,12 @@ namespace TransportStore.Domain.Models
 {
     public class EFStoreRepository : IStoreRepository
     {
+        public Transport? GetTransportWithReviews(long id)
+        {
+            return context.Transports
+                        .Include(t => t.Reviews)
+                        .FirstOrDefault(t => t.Id == id);
+        }
         private StoreDbContext context;
         public EFStoreRepository(StoreDbContext ctx)
         {

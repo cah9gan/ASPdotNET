@@ -11,5 +11,6 @@ namespace TransportStore.Domain.Models
 
         void CreateReview(Review r);
         void DeleteReview(Review r);
+        Transport? GetTransportWithReviews(long id);
     }
 }
