@@ -4174,19 +4174,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\38095\\.nuget\\packages\\": {}
+    "C:\\Users\\1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\labs\\lab2\\TransportSln\\TransportStore\\TransportStore.csproj",
+      "projectUniqueName": "E:\\да\\ASPdotNET\\lab2\\TransportSln\\TransportStore\\TransportStore.csproj",
       "projectName": "TransportStore",
-      "projectPath": "D:\\labs\\lab2\\TransportSln\\TransportStore\\TransportStore.csproj",
-      "packagesPath": "C:\\Users\\38095\\.nuget\\packages\\",
-      "outputPath": "D:\\labs\\lab2\\TransportSln\\TransportStore\\obj\\",
+      "projectPath": "E:\\да\\ASPdotNET\\lab2\\TransportSln\\TransportStore\\TransportStore.csproj",
+      "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
+      "outputPath": "E:\\да\\ASPdotNET\\lab2\\TransportSln\\TransportStore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\38095\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4198,8 +4198,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\labs\\lab2\\TransportSln\\TransportStore.Domain\\TransportStore.Domain.csproj": {
-              "projectPath": "D:\\labs\\lab2\\TransportSln\\TransportStore.Domain\\TransportStore.Domain.csproj"
+            "E:\\да\\ASPdotNET\\lab2\\TransportSln\\TransportStore.Domain\\TransportStore.Domain.csproj": {
+              "projectPath": "E:\\да\\ASPdotNET\\lab2\\TransportSln\\TransportStore.Domain\\TransportStore.Domain.csproj"
             }
           }
         }
@@ -4255,7 +4255,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.415/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.419/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -18,9 +18,7 @@ namespace TransportStore.Controllers
 
         public IActionResult Details(long id)
         {
-            var transport = repository.Transports
-                .FirstOrDefault(t => t.Id == id);
-                
+            var transport = GetTransportById(id);    
             if (transport == null) return NotFound();
             
             return View(transport);
@@ -51,7 +49,7 @@ namespace TransportStore.Controllers
 
         public IActionResult Delete(long id)
         {
-            var transport = repository.Transports.FirstOrDefault(t => t.Id == id);
+            var transport = GetTransportById(id);
             if (transport == null) return NotFound();
             return View(transport);
         }
@@ -59,7 +57,7 @@ namespace TransportStore.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(long id)
         {
-            var transport = repository.Transports.FirstOrDefault(t => t.Id == id);
+           var transport = GetTransportById(id);
             if (transport != null)
             {
                 repository.DeleteTransport(transport);
@@ -86,5 +84,9 @@ namespace TransportStore.Controllers
             }
             return RedirectToAction("Details", new { id = transportId });
         }
+        private Transport? GetTransportById(long id)
+{
+    return repository.Transports.FirstOrDefault(t => t.Id == id);
+}
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TransportStore.BlazorClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a67d48ea8af01527cdb3c37a0c999bbc8a8b268c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a552e409006bbf80945039cba1e0dc4aeb56180")]
 [assembly: System.Reflection.AssemblyProductAttribute("TransportStore.BlazorClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TransportStore.BlazorClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
