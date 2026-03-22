@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TransportStore.Domain.Models; // Updated namespace for Domain models
+using TransportStore.Domain.Models; 
 using TransportStore.Models.ViewModels; 
 
 namespace TransportStore.Controllers
@@ -41,9 +41,7 @@ namespace TransportStore.Controllers
 
         public IActionResult Details(long id)
         {
-            var transport = repository.Transports
-                .Include(t => t.Reviews) 
-                .FirstOrDefault(t => t.Id == id);
+            var transport = repository.GetTransportWithReviews(id);
 
             if (transport == null) return NotFound();
 
